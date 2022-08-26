@@ -1,11 +1,6 @@
 @import "./base/normalize";
 @import "./base/fonts";
 
-.container {
-  max-width: 1220px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
 
 .wrapper {
   display: flex;
@@ -14,5 +9,5 @@
 }
 
 body {
-  background-color: #b4afaf;
+  background-color: #ebeff0;
 }
