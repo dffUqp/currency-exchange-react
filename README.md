@@ -7,6 +7,22 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 It is minimalistic app which realized exchange currency func. \
 Preview at this [Link](https://dffuqp.github.io/currency-exchange-react/)
 
+### Data Storage
+to store information, I used [useReducer](https://uk.reactjs.org/docs/hooks-reference.html#usereducer) instead of useState for more convenient development and optimization code
+
+![](https://cdn.discordapp.com/attachments/481837341942611969/1012745388442255402/unknown.png)
+
+
+![](https://cdn.discordapp.com/attachments/481837341942611969/1012745805288980530/unknown_1.png)
+
+### Design
+
+In order for everything to look neat and beautiful. \
+I used UI components from [MaterialUI](https://mui.com/material-ui/getting-started/overview/)
+
+### API 
+[Free Currency Rates API](https://github.com/fawazahmed0/currency-api#readme) helped me get all data that i needed. \
+For request i used [axios](https://axios-http.com/docs/intro) and own useFetching hook 
 
 
 ## Available Scripts
@@ -33,23 +49,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 
 ## Learn More
----
-### Data Storage
-I used to store information [useReducer](https://uk.reactjs.org/docs/hooks-reference.html#usereducer) instead of useState for more convenient development and optimization code
 
-![](https://cdn.discordapp.com/attachments/481837341942611969/1012745388442255402/unknown.png)
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-
-![](https://cdn.discordapp.com/attachments/481837341942611969/1012745805288980530/unknown_1.png)
-
-### Design
-
-In order for everything to look neat and beautiful. \
-I used UI components from [MaterialUI](https://mui.com/material-ui/getting-started/overview/)
-
-### API 
-a [Free Currency Rates API](https://github.com/fawazahmed0/currency-api#readme) helped me get all the data that I need \
-For request i used [axios](https://axios-http.com/docs/intro) and own useFetching hook 
+To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 
