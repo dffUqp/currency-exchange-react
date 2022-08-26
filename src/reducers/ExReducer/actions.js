@@ -40,6 +40,12 @@ export const changesecondaryInputValue = (value, baseRates) => {
 };
 
 export const setmainSelect = (value, inputValue, baseRates, currentRate) => {
+  inputValue = inputValue.replace(
+    // eslint-disable-next-line
+    /[\\A-Za-z!"£$%^&\-\)\(*+_={};:'@#~x,Š\/<>\" "\?|`¬\]\[]/g,
+    ''
+  );
+
   const calculatedValue =
     inputValue === ''
       ? ''
@@ -60,8 +66,14 @@ export const setsecondarySelect = (
   baseRates,
   currentRate
 ) => {
+  inputValue = inputValue.replace(
+    // eslint-disable-next-line
+    /[\\A-Za-z!"£$%^&\-\)\(*+_={};:'@#~x,Š\/<>\" "\?|`¬\]\[]/g,
+    ''
+  );
+
   const calculatedValue =
-    inputValue === ''
+    inputValue === '' 
       ? ''
       : formatCurrency((currentRate / baseRates.item1) * inputValue);
 
