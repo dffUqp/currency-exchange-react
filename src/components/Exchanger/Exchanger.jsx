@@ -8,7 +8,7 @@ import ExchangerBlock from '../ExchangerBlock';
 const Exchanger = () => {
   const [data, setData] = useState({});
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [fetching] = UseFetching(async () => {
+  const [fetching, isLoading, error] = UseFetching(async () => {
     const respons = await ExchangeService.getCurrenciesEur();
     setData(respons.data.eur);
   });
@@ -25,27 +25,31 @@ const Exchanger = () => {
 
   return (
     <Container maxWidth="lg">
-      <Stack
-        direction={{ xs: 'column', sm: 'row' }}
-        spacing={{ xs: 5, sm: 10 }}
-        sx={{ p: '20px 0' }}
-      >
-        <ExchangerBlock
-          type="main"
-          state={state}
-          baseRates={baseRates}
-          data={data}
-          dispatch={dispatch}
-        />
+      {isLoading || error ? (
+        <h1 style={{ color: 'grey' }}>lOADING...</h1>
+      ) : (
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
+          spacing={{ xs: 5, sm: 10 }}
+          sx={{ p: '20px 0' }}
+        >
+          <ExchangerBlock
+            type="main"
+            state={state}
+            baseRates={baseRates}
+            data={data}
+            dispatch={dispatch}
+          />
 
-        <ExchangerBlock
-          type="secondary"
-          state={state}
-          baseRates={baseRates}
-          data={data}
-          dispatch={dispatch}
-        />
-      </Stack>
+          <ExchangerBlock
+            type="secondary"
+            state={state}
+            baseRates={baseRates}
+            data={data}
+            dispatch={dispatch}
+          />
+        </Stack>
+      )}
     </Container>
   );
 };

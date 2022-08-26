@@ -8,7 +8,7 @@ import styles from './Header.module.scss';
 const Header = () => {
   const [data, setData] = useState(null);
 
-  const [fetching] = UseFetching(async () => {
+  const [fetching, isLoading, error] = UseFetching(async () => {
     const respons = await ExchangeService.getCurrenciesUsd();
     setData(respons.data.usd);
   });
@@ -21,10 +21,12 @@ const Header = () => {
   return (
     <header>
       <Container maxWidth="lg">
-        <div className={styles.header}>
-          <span>{formatCurrency(data?.usd)} USD</span>/
-          <span>{formatCurrency(data?.uah)} UAH</span>
-        </div>
+        {isLoading || error ? null : (
+          <div className={styles.header}>
+            <span>{formatCurrency(data?.usd)} USD</span>/
+            <span>{formatCurrency(data?.uah)} UAH</span>
+          </div>
+        )}
       </Container>
     </header>
   );
