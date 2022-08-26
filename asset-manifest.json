@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/currency-exchange-react/static/css/main.b8fc23af.css",
+    "main.js": "/currency-exchange-react/static/js/main.e05780ec.js",
+    "static/media/Roboto-Regular.ttf": "/currency-exchange-react/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
+    "static/media/Roboto-Bold.ttf": "/currency-exchange-react/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
+    "index.html": "/currency-exchange-react/index.html",
+    "main.b8fc23af.css.map": "/currency-exchange-react/static/css/main.b8fc23af.css.map",
+    "main.e05780ec.js.map": "/currency-exchange-react/static/js/main.e05780ec.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b8fc23af.css",
+    "static/js/main.e05780ec.js"
+  ]
+}
