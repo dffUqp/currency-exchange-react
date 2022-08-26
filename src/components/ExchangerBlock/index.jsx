@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { useMemo } from 'react';
 import CurrencyInput from '../UI/input/CurrencyInput';
 import CurrencySelect from '../UI/select/CurrencySelect';
 import { selectOptions } from './selectOptions';
@@ -12,26 +12,24 @@ const ExchangerBlock = ({
   data,
   baseRates,
 }) => {
-  let props = {};
+  const props = useMemo(() => {
+    if (type === 'main') {
+      return {
+        selectValue: state.mainSelect,
+        inputValue: state.mainInput,
+        inputAction: ExchangeActions.changemainInputValue,
+        selectAction: ExchangeActions.setmainSelect,
+      };
+    }
 
-  if (type === 'main') {
-    props = {
-      selectValue: state.mainSelect,
-      inputValue: state.mainInput,
-      inputAction: ExchangeActions.changemainInputValue,
-      selectAction: ExchangeActions.setmainSelect,
-    };
-  }
-
-  if (type === 'secondary') {
-    props = {
+    return {
       selectValue: state.secondarySelect,
       inputValue: state.secondaryInput,
       inputValueForCalc: state.mainInput,
       inputAction: ExchangeActions.changesecondaryInputValue,
       selectAction: ExchangeActions.setsecondarySelect,
     };
-  }
+  }, [type, state]);
 
   return (
     <div className={styles.block}>
@@ -57,4 +55,4 @@ const ExchangerBlock = ({
   );
 };
 
-export default memo(ExchangerBlock);
+export default ExchangerBlock;

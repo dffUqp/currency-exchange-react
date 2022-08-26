@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { MenuItem, FormControl, Select } from '@mui/material';
 
 const CurrencySelect = ({ option, value, onChange }) => {
