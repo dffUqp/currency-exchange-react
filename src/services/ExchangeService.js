@@ -7,4 +7,11 @@ export default class ExchangeService {
       url: 'latest/currencies/eur.json',
     });
   }
+
+  static async getCurrenciesUsd() {
+    return await axios({
+      method: 'GET',
+      url: 'latest/currencies/usd.json',
+    });
+  }
 }

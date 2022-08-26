@@ -1,8 +1,13 @@
 import React from 'react';
-import  "./sass/app.scss"
+import Exchanger from './components/Exchanger/Exchanger';
+import './sass/app.scss';
 
 function App() {
-  return <div className="App">start</div>;
+  return (
+    <>
+      <Exchanger />
+    </>
+  );
 }
 
 export default App;
