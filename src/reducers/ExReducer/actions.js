@@ -1,55 +1,41 @@
-import { formatCurrency } from '../../utils/formarCurrency';
+import { getOnlyNumbers, roundCurrency } from '../../utils';
 
 export const changemainInputValue = (value, baseRates) => {
-  value = value.replace(
-    // eslint-disable-next-line
-    /[\\A-Za-z!"£$%^&\-\)\(*+_={};:'@#~x,Š\/<>\" "\?|`¬\]\[]/g,
-    ''
-  );
+  value = getOnlyNumbers(value);
 
-  const calculatedValue = formatCurrency(
+  const calculatedValue = roundCurrency(
     (baseRates.item2 / baseRates.item1) * value
   );
 
   return {
     type: 'CHANGE_MAIN_INPUT',
     payload: {
-      mainInput: formatCurrency(value),
+      mainInput: value,
       secondaryInput: calculatedValue,
     },
   };
 };
 
 export const changesecondaryInputValue = (value, baseRates) => {
-  value = value.replace(
-    // eslint-disable-next-line
-    /[\\A-Za-z!"£$%^&\-\)\(*+_={};:'@#~x,Š\/<>\" "\?|`¬\]\[]/g,
-    ''
-  );
-  const calculatedValue = formatCurrency(
+  value = getOnlyNumbers(value);
+
+  const calculatedValue = roundCurrency(
     (baseRates.item1 / baseRates.item2) * value
   );
 
   return {
     type: 'CHANGE_SECONDARY_INPUT',
     payload: {
-      secondaryInput: formatCurrency(value),
+      secondaryInput: value,
       mainInput: calculatedValue,
     },
   };
 };
 
 export const setmainSelect = (value, inputValue, baseRates, currentRate) => {
-  inputValue = inputValue.replace(
-    // eslint-disable-next-line
-    /[\\A-Za-z!"£$%^&\-\)\(*+_={};:'@#~x,Š\/<>\" "\?|`¬\]\[]/g,
-    ''
+  const calculatedValue = roundCurrency(
+    (baseRates.item2 / currentRate) * inputValue
   );
-
-  const calculatedValue =
-    inputValue === ''
-      ? ''
-      : formatCurrency((baseRates.item2 / currentRate) * inputValue);
 
   return {
     type: 'SET_MAIN_SELECT',
@@ -66,16 +52,9 @@ export const setsecondarySelect = (
   baseRates,
   currentRate
 ) => {
-  inputValue = inputValue.replace(
-    // eslint-disable-next-line
-    /[\\A-Za-z!"£$%^&\-\)\(*+_={};:'@#~x,Š\/<>\" "\?|`¬\]\[]/g,
-    ''
+  const calculatedValue = roundCurrency(
+    (currentRate / baseRates.item1) * inputValue
   );
-
-  const calculatedValue =
-    inputValue === '' 
-      ? ''
-      : formatCurrency((currentRate / baseRates.item1) * inputValue);
 
   return {
     type: 'SET_SECONDARY_SELECT',

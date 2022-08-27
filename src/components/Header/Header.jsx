@@ -2,7 +2,7 @@ import { Container } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { UseFetching } from '../../hooks/UseFetching';
 import ExchangeService from '../../services/ExchangeService';
-import { formatCurrency } from '../../utils/formarCurrency';
+import { roundCurrency } from '../../utils';
 import styles from './Header.module.scss';
 
 const Header = () => {
@@ -23,8 +23,8 @@ const Header = () => {
       <Container maxWidth="lg">
         {isLoading || error ? null : (
           <div className={styles.header}>
-            <span>{formatCurrency(data?.usd)} USD</span>/
-            <span>{formatCurrency(data?.uah)} UAH</span>
+            <span>{roundCurrency(data?.usd)} USD</span>/
+            <span>{roundCurrency(data?.uah)} UAH</span>
           </div>
         )}
       </Container>
