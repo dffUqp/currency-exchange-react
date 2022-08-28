@@ -16,7 +16,16 @@ const CurrencySelect = ({ option, value, onChange }) => {
       >
         {option.map((item) => (
           <MenuItem key={item.value} value={item.value}>
-            {item.name}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                columnGap: '10px',
+              }}
+            >
+              <img src={item.src} alt={item.alt} />
+              <span>{item.name}</span>
+            </div>
           </MenuItem>
         ))}
       </Select>
