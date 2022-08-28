@@ -24,8 +24,6 @@ const Exchanger = () => {
     item2: data[state.secondarySelect],
   };
 
-
-
   return (
     <Container maxWidth="lg">
       <Stack
@@ -44,12 +42,14 @@ const Exchanger = () => {
               type="main"
               state={state}
               dispatch={dispatch}
+              data={data}
               baseRates={baseRates}
             />
             <ExchangerBlock
               type="secondary"
               state={state}
               dispatch={dispatch}
+              data={data}
               baseRates={baseRates}
             />
           </>
