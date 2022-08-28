@@ -4,6 +4,7 @@ import { UseFetching } from '../../hooks/UseFetching';
 import ExchangeService from '../../services/ExchangeService';
 import { initialState, reducer } from '../../reducers/ExReducer/index';
 import ExchangerBlock from '../ExchangerBlock';
+import ExchangerBlockSkeleton from '../UI/loaders/ExchangerBlockSkeleton';
 
 const Exchanger = () => {
   const [data, setData] = useState({});
@@ -23,33 +24,37 @@ const Exchanger = () => {
     item2: data[state.secondarySelect],
   };
 
+
+
   return (
     <Container maxWidth="lg">
-      {isLoading || error ? (
-        <h1 style={{ color: 'grey' }}>lOADING...</h1>
-      ) : (
-        <Stack
-          direction={{ xs: 'column', sm: 'row' }}
-          spacing={{ xs: 5, sm: 10 }}
-          sx={{ p: '20px 0' }}
-        >
-          <ExchangerBlock
-            type="main"
-            state={state}
-            baseRates={baseRates}
-            data={data}
-            dispatch={dispatch}
-          />
-
-          <ExchangerBlock
-            type="secondary"
-            state={state}
-            baseRates={baseRates}
-            data={data}
-            dispatch={dispatch}
-          />
-        </Stack>
-      )}
+      <Stack
+        direction={{ xs: 'column', sm: 'row' }}
+        spacing={{ xs: 5, sm: 10 }}
+        sx={{ p: '20px 0' }}
+      >
+        {isLoading || error ? (
+          <>
+            <ExchangerBlockSkeleton />
+            <ExchangerBlockSkeleton />
+          </>
+        ) : (
+          <>
+            <ExchangerBlock
+              type="main"
+              state={state}
+              dispatch={dispatch}
+              baseRates={baseRates}
+            />
+            <ExchangerBlock
+              type="secondary"
+              state={state}
+              dispatch={dispatch}
+              baseRates={baseRates}
+            />
+          </>
+        )}
+      </Stack>
     </Container>
   );
 };
