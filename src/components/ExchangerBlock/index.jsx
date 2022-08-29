@@ -17,8 +17,8 @@ const ExchangerBlock = ({
       return {
         selectValue: state.mainSelect,
         inputValue: state.mainInput,
-        inputAction: ExchangeActions.changemainInputValue,
-        selectAction: ExchangeActions.setmainSelect,
+        inputAction: ExchangeActions.changeMainInputValue,
+        selectAction: ExchangeActions.setMainSelect,
       };
     }
 
@@ -26,8 +26,8 @@ const ExchangerBlock = ({
       selectValue: state.secondarySelect,
       inputValue: state.secondaryInput,
       inputValueForCalc: state.mainInput,
-      inputAction: ExchangeActions.changesecondaryInputValue,
-      selectAction: ExchangeActions.setsecondarySelect,
+      inputAction: ExchangeActions.changeSecondaryInputValue,
+      selectAction: ExchangeActions.setSecondarySelect,
     };
   }, [type, state]);
 

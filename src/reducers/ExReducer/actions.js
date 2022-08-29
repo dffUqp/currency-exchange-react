@@ -1,6 +1,6 @@
-import { getOnlyNumbers, roundCurrency } from '../../utils';
+import { getOnlyNumbers, numberWithSpaces, roundCurrency } from '../../utils';
 
-export const changemainInputValue = (value, baseRates) => {
+export const changeMainInputValue = (value, baseRates) => {
   value = getOnlyNumbers(value);
 
   const calculatedValue = roundCurrency(
@@ -10,13 +10,13 @@ export const changemainInputValue = (value, baseRates) => {
   return {
     type: 'CHANGE_MAIN_INPUT',
     payload: {
-      mainInput: value,
-      secondaryInput: calculatedValue,
+      mainInput: numberWithSpaces(value),
+      secondaryInput: numberWithSpaces(calculatedValue),
     },
   };
 };
 
-export const changesecondaryInputValue = (value, baseRates) => {
+export const changeSecondaryInputValue = (value, baseRates) => {
   value = getOnlyNumbers(value);
 
   const calculatedValue = roundCurrency(
@@ -26,13 +26,15 @@ export const changesecondaryInputValue = (value, baseRates) => {
   return {
     type: 'CHANGE_SECONDARY_INPUT',
     payload: {
-      secondaryInput: value,
-      mainInput: calculatedValue,
+      secondaryInput: numberWithSpaces(value),
+      mainInput: numberWithSpaces(calculatedValue),
     },
   };
 };
 
-export const setmainSelect = (value, inputValue, baseRates, currentRate) => {
+export const setMainSelect = (value, inputValue, baseRates, currentRate) => {
+  inputValue = getOnlyNumbers(inputValue);
+
   const calculatedValue = roundCurrency(
     (baseRates.item2 / currentRate) * inputValue
   );
@@ -41,17 +43,19 @@ export const setmainSelect = (value, inputValue, baseRates, currentRate) => {
     type: 'SET_MAIN_SELECT',
     payload: {
       value: value,
-      secondaryInput: calculatedValue,
+      secondaryInput: numberWithSpaces(calculatedValue),
     },
   };
 };
 
-export const setsecondarySelect = (
+export const setSecondarySelect = (
   value,
   inputValue,
   baseRates,
   currentRate
 ) => {
+  inputValue = getOnlyNumbers(inputValue);
+
   const calculatedValue = roundCurrency(
     (currentRate / baseRates.item1) * inputValue
   );
@@ -60,7 +64,7 @@ export const setsecondarySelect = (
     type: 'SET_SECONDARY_SELECT',
     payload: {
       value: value,
-      secondaryInput: calculatedValue,
+      secondaryInput: numberWithSpaces(calculatedValue),
     },
   };
 };

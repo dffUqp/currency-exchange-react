@@ -7,7 +7,7 @@ function getOnlyNumbers(value) {
     .replace(/\./g, '')
     .replace(/x/, '.');
 
-  if (value === '' || value === '.') {
+  if (value === '' || value === '.' || value.length >= 16) {
     return '';
   }
 
