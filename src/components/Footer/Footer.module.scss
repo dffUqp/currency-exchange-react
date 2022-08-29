@@ -1,0 +1,14 @@
+.footer {
+  margin-top: auto;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+  }
+
+  &__text {
+    color: #c0c0c0;
+  }
+}

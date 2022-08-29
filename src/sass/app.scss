@@ -1,13 +1,12 @@
-@import "./base/normalize";
-@import "./base/fonts";
+@import './base/normalize';
+@import './base/fonts';
 
+body {
+  background-color: #ebeff0;
+}
 
 .wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-body {
-  background-color: #ebeff0;
 }
