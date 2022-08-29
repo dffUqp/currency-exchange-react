@@ -1,8 +1,9 @@
-@import './base/normalize';
+@import './base/reset';
 @import './base/fonts';
+@import './base/colors';
 
 body {
-  background-color: #ebeff0;
+  background-color: var(--gray);
 }
 
 .wrapper {
