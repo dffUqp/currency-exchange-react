@@ -4,6 +4,7 @@ import CurrencySelect from '../UI/select/CurrencySelect';
 import { selectOptions } from './selectOptions';
 import styles from './ExchangerBlock.module.scss';
 import { ExchangeActions } from '../../reducers/ExReducer';
+import PropTypes from 'prop-types';
 
 const ExchangerBlock = ({
   type = 'main',
@@ -56,3 +57,23 @@ const ExchangerBlock = ({
 };
 
 export default ExchangerBlock;
+
+ExchangerBlock.propTypes = {
+  type: PropTypes.string,
+
+  state: PropTypes.shape({
+    mainInput: PropTypes.string,
+    secondaryInput: PropTypes.string,
+    mainSelect: PropTypes.string,
+    secondarySelect: PropTypes.string,
+  }).isRequired,
+
+  dispatch: PropTypes.any.isRequired,
+
+  data: PropTypes.any.isRequired,
+  
+  baseRates: PropTypes.shape({
+    item1: PropTypes.number,
+    item2: PropTypes.number,
+  }).isRequired,
+};
