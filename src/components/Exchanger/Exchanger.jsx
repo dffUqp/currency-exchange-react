@@ -5,6 +5,7 @@ import ExchangeService from '../../services/ExchangeService';
 import { initialState, reducer } from '../../reducers/ExReducer/index';
 import ExchangerBlock from '../ExchangerBlock';
 import ExchangerBlockSkeleton from '../UI/loaders/ExchangerBlockSkeleton';
+import { useMemo } from 'react';
 
 const Exchanger = () => {
   const [data, setData] = useState({});
@@ -19,10 +20,12 @@ const Exchanger = () => {
     // eslint-disable-next-line
   }, []);
 
-  const baseRates = {
-    item1: data[state.mainSelect],
-    item2: data[state.secondarySelect],
-  };
+  const baseRates = useMemo(() => {
+    return {
+      mainSelectRate: data[state.mainSelect],
+      secSelectRate: data[state.secondarySelect],
+    };
+  }, [data, state.mainSelect, state.secondarySelect]);
 
   return (
     <Container maxWidth="lg">

@@ -1,10 +1,11 @@
 import { getOnlyNumbers, numberWithSpaces, roundCurrency } from '../../utils';
 
 export const changeMainInputValue = (value, baseRates) => {
+  const { mainSelectRate, secSelectRate } = baseRates;
   value = getOnlyNumbers(value);
 
   const calculatedValue = roundCurrency(
-    (baseRates.item2 / baseRates.item1) * value
+    (secSelectRate / mainSelectRate) * value
   );
 
   return {
@@ -17,10 +18,11 @@ export const changeMainInputValue = (value, baseRates) => {
 };
 
 export const changeSecondaryInputValue = (value, baseRates) => {
+  const { mainSelectRate, secSelectRate } = baseRates;
   value = getOnlyNumbers(value);
 
   const calculatedValue = roundCurrency(
-    (baseRates.item1 / baseRates.item2) * value
+    (mainSelectRate / secSelectRate) * value
   );
 
   return {
@@ -33,10 +35,11 @@ export const changeSecondaryInputValue = (value, baseRates) => {
 };
 
 export const setMainSelect = (value, inputValue, baseRates, currentRate) => {
+  const { secSelectRate } = baseRates;
   inputValue = getOnlyNumbers(inputValue);
 
   const calculatedValue = roundCurrency(
-    (baseRates.item2 / currentRate) * inputValue
+    (secSelectRate / currentRate) * inputValue
   );
 
   return {
@@ -54,10 +57,11 @@ export const setSecondarySelect = (
   baseRates,
   currentRate
 ) => {
+  const { mainSelectRate } = baseRates;
   inputValue = getOnlyNumbers(inputValue);
 
   const calculatedValue = roundCurrency(
-    (currentRate / baseRates.item1) * inputValue
+    (currentRate / mainSelectRate) * inputValue
   );
 
   return {

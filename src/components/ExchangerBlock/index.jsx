@@ -13,7 +13,13 @@ const ExchangerBlock = ({
   data,
   baseRates,
 }) => {
-  const props = useMemo(() => {
+  const {
+    selectValue,
+    inputValue,
+    inputAction,
+    selectAction,
+    inputValueForCalc,
+  } = useMemo(() => {
     if (type === 'main') {
       return {
         selectValue: state.mainSelect,
@@ -31,16 +37,17 @@ const ExchangerBlock = ({
       selectAction: ExchangeActions.setSecondarySelect,
     };
   }, [type, state]);
+  
 
   return (
     <div className={styles.block}>
       <CurrencySelect
-        value={props.selectValue}
+        value={selectValue}
         onChange={(value) =>
           dispatch(
-            props.selectAction(
+            selectAction(
               value,
-              type === 'main' ? props.inputValue : props.inputValueForCalc,
+              inputValueForCalc ?? inputValue,
               baseRates,
               data[value]
             )
@@ -49,8 +56,8 @@ const ExchangerBlock = ({
         option={selectOptions}
       />
       <CurrencyInput
-        value={props.inputValue}
-        onChange={(value) => dispatch(props.inputAction(value, baseRates))}
+        value={inputValue}
+        onChange={(value) => dispatch(inputAction(value, baseRates))}
       />
     </div>
   );
@@ -71,7 +78,7 @@ ExchangerBlock.propTypes = {
   dispatch: PropTypes.any.isRequired,
 
   data: PropTypes.any.isRequired,
-  
+
   baseRates: PropTypes.shape({
     item1: PropTypes.number,
     item2: PropTypes.number,

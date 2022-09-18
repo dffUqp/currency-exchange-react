@@ -14,7 +14,7 @@ const CurrencyInput = ({ value, onChange, placeholder }) => {
       variant="filled"
       size="medium"
       sx={{ width: '100%' }}
-      type={'text'}
+      type='text'
       autoComplete="off"
     />
   );
