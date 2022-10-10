@@ -39,9 +39,8 @@ I used UI components from [MaterialUI](https://mui.com/material-ui/getting-start
 ### API
 
 [Free Currency Rates API](https://github.com/fawazahmed0/currency-api#readme)
-API helped me get all data that I needed. \
-For request, I used [Axios](https://axios-http.com/docs/intro) and my useFetching hook 
-
+helped me get all data that I needed. \
+For request, I use [Axios](https://axios-http.com/docs/intro) and my useFetching hook 
 
 ## Available Scripts
 In the project directory, you can run:
