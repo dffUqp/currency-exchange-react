@@ -4,25 +4,43 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## About Project
 
-It is minimalistic app which realized exchange currency func. \
+It is a minimalistic app that realized exchange currency func. \
 Preview at this [Link](https://dffuqp.github.io/currency-exchange-react/)
 
 ### Data Storage
-to store information, I used [useReducer](https://uk.reactjs.org/docs/hooks-reference.html#usereducer) instead of useState for more convenient development and optimization code
+To store information, I used [useReducer](https://uk.reactjs.org/docs/hooks-reference.html#usereducer) instead of useState for more convenient development and optimization code
 
-![](https://cdn.discordapp.com/attachments/481837341942611969/1012745388442255402/unknown.png)
+```js
+const [state, dispatch] = useReducer(reducer, initialState);
+```
 
+```js
+export const initialState = {
+  mainInput: '',
+  secondaryInput: '',
+  mainSelect: 'usd',
+  secondarySelect: 'uah',
+};
 
-![](https://cdn.discordapp.com/attachments/481837341942611969/1012745805288980530/unknown_1.png)
+export function reducer(state, actions) {
+  switch (actions.type) {
+    case 'CHANGE_MAIN_INPUT':
+      return {..state, ...}
+    default:
+      return state;
+  }
+```
 
 ### Design
 
-In order for everything to look neat and beautiful. \
-I used UI components from [MaterialUI](https://mui.com/material-ui/getting-started/overview/)
+For everything to look neat and beautiful, 
+I used UI components from [MaterialUI](https://mui.com/material-ui/getting-started/overview/).
 
-### API 
-[Free Currency Rates API](https://github.com/fawazahmed0/currency-api#readme) helped me get all data that i needed. \
-For request i used [axios](https://axios-http.com/docs/intro) and own useFetching hook 
+### API
+
+[Free Currency Rates API](https://github.com/fawazahmed0/currency-api#readme)
+API helped me get all data that I needed. \
+For request, I used [Axios](https://axios-http.com/docs/intro) and my useFetching hook 
 
 
 ## Available Scripts
@@ -53,6 +71,3 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-
-
