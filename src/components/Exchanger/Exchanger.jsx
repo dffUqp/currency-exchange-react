@@ -1,22 +1,21 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useState, useMemo } from 'react';
 import { Container, Stack } from '@mui/material';
-import { UseFetching } from '../../hooks/UseFetching';
+import { useFetching } from '../../hooks/useFetching';
 import ExchangeService from '../../services/ExchangeService';
 import { initialState, reducer } from '../../reducers/ExReducer/index';
 import ExchangerBlock from '../ExchangerBlock';
 import ExchangerBlockSkeleton from '../UI/loaders/ExchangerBlockSkeleton';
-import { useMemo } from 'react';
 
 const Exchanger = () => {
   const [data, setData] = useState({});
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [fetching, isLoading, error] = UseFetching(async () => {
-    const respons = await ExchangeService.getCurrenciesEur();
-    setData(respons.data.eur);
+  const [fetch, isLoading, error] = useFetching(async () => {
+    const response = await ExchangeService.getCurrenciesEur();
+    setData(response.data.eur);
   });
 
   useEffect(() => {
-    fetching();
+    fetch();
     // eslint-disable-next-line
   }, []);
 

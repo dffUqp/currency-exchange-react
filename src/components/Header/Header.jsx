@@ -1,6 +1,6 @@
 import { Container } from '@mui/system';
 import React, { useEffect, useState } from 'react';
-import { UseFetching } from '../../hooks/UseFetching';
+import { useFetching } from '../../hooks/useFetching';
 import ExchangeService from '../../services/ExchangeService';
 import { roundCurrency } from '../../utils';
 import HeaderSkeleton from '../UI/loaders/HeaderSkeleton';
@@ -9,9 +9,9 @@ import styles from './Header.module.scss';
 const Header = () => {
   const [data, setData] = useState(null);
 
-  const [fetching, isLoading, error] = UseFetching(async () => {
-    const respons = await ExchangeService.getCurrenciesUsd();
-    setData(respons.data.usd);
+  const [fetching, isLoading, error] = useFetching(async () => {
+    const response = await ExchangeService.getCurrenciesUsd();
+    setData(response.data.usd);
   });
 
   useEffect(() => {
